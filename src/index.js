@@ -27,7 +27,15 @@ function preload ()
 
 function create ()
 {
-    this.add.image(400, 300, 'wizball').setScale(4);
+    var image = this.add.image(400, 300, 'wizball').setScale(4);
+    image.setInteractive();
+    image.once("pointerdown", () => {
+      console.log("create iframe");
+      var iframe = document.createElement("iframe");
+      iframe.src = "iframe.html";
+      iframe.style = "border: 0;height: 100%;position: fixed;width: 100%;overflow: hidden;z-index: 2147483647;top:0;left:0;";
+      document.body.appendChild(iframe);
+    })
 
     var music = this.sound.add('theme');
 
