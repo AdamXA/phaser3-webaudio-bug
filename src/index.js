@@ -1,5 +1,6 @@
 import Phaser from "phaser";
-import logoImg from "./assets/logo.png";
+import wizball from "./assets/wizball.png";
+import wizballaudio from "./assets/oedipus_wizball_highscore.mp3";
 
 const config = {
   type: Phaser.AUTO,
@@ -14,19 +15,18 @@ const config = {
 
 const game = new Phaser.Game(config);
 
-function preload() {
-  this.load.image("logo", logoImg);
+function preload ()
+{
+    this.load.audio('theme', [wizballaudio]);
+
+    this.load.image('wizball', wizball);
 }
 
-function create() {
-  const logo = this.add.image(400, 150, "logo");
+function create ()
+{
+    this.add.image(400, 300, 'wizball').setScale(4);
 
-  this.tweens.add({
-    targets: logo,
-    y: 450,
-    duration: 2000,
-    ease: "Power2",
-    yoyo: true,
-    loop: -1
-  });
+    var music = this.sound.add('theme');
+
+    music.play();
 }
