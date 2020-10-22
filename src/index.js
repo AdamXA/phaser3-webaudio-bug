@@ -27,9 +27,10 @@ function preload ()
 
 function create ()
 {
-    this.add.image(400, 300, 'wizball').setScale(4);
-
-    var music = this.sound.add('theme');
-
-    music.play({ loop: true });
+    var image = this.add.image(400, 300, 'wizball').setScale(4);
+    image.setInteractive();
+    image.once("pointerdown", () => {
+      var music = this.sound.add('theme');
+      music.play({ loop: true });
+    }, this)
 }
