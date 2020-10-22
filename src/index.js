@@ -10,6 +10,9 @@ const config = {
   scene: {
     preload: preload,
     create: create
+  },
+  audio: {
+    disableWebAudio: false,
   }
 };
 
@@ -28,5 +31,5 @@ function create ()
 
     var music = this.sound.add('theme');
 
-    music.play();
+    music.play({ loop: true });
 }
